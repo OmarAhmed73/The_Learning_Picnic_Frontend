@@ -1,0 +1,27 @@
+@media (max-width: 300px){
+    .gridContainer{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (min-width: 301px) and (max-width: 500px){
+    .gridContainer{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 501px) and (max-width: 620px) {
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 621px) and (max-width: 840px) {
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
