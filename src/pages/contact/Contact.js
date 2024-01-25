@@ -5,7 +5,7 @@ import '../../pages/style/Contact.css'
 const Contact = () => {
   return (
     <div className="heroContactUs">
-      <div class="cube"></div>
+  <div class="cube"></div>
   <div class="cube"></div>
   <div class="cube"></div>
   <div class="cube"></div>

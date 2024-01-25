@@ -7,7 +7,7 @@ import Contact from "../pages/contact/Contact";
 import ShowLessons from "../components/Lessons/ShowLessons";
 import Summarization from "../pages/Summarization/Summarization";
 import Register from "../pages/Auth/Register";
-
+import LessonAddition from "../components/Lessons/Teacher/LessonAddition";
 
 export const routes = createBrowserRouter([
  {
@@ -38,6 +38,10 @@ export const routes = createBrowserRouter([
         {
             path: '/Summarization',
             element: <Summarization/>
+        },
+        {
+            path: '/addition',
+            element: <LessonAddition/>
         }
     ]
   }
