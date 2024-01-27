@@ -9,6 +9,7 @@ import Summarization from "../pages/Summarization/Summarization";
 import Register from "../pages/Auth/Register";
 import LessonAddition from "../components/Lessons/Teacher/LessonAddition";
 import Account from "../pages/Account/Account";
+import ShowQuiz from "../components/Quizzes/ShowQuiz";
 
 export const routes = createBrowserRouter([
  {
@@ -47,6 +48,10 @@ export const routes = createBrowserRouter([
         {
             path: "/account",
             element: <Account/>
+        },
+        {
+            path: "/quizzes",
+            element: <ShowQuiz/>
         }
     ]
   }
