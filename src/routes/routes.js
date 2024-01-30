@@ -10,6 +10,7 @@ import Register from "../pages/Auth/Register";
 import LessonAddition from "../components/Lessons/Teacher/LessonAddition";
 import Account from "../pages/Account/Account";
 import ShowQuiz from "../components/Quizzes/ShowQuiz";
+import ShowReports from "../pages/Reports/ShowReports";
 
 export const routes = createBrowserRouter([
  {
@@ -52,7 +53,11 @@ export const routes = createBrowserRouter([
         {
             path: "/quizzes",
             element: <ShowQuiz/>
-        }
+        },
+        {
+            path: "/reports",
+            element: <ShowReports/>
+        },
     ]
   }
 ]);
