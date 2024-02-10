@@ -1,17 +1,40 @@
-import React from "react"
+import React, {useState} from "react"
 import "../style/Login.css"
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios'
+import { setAuthUser } from "../../helper/Storage";
 import child from '../../assets/child.jpg'
 import kid from '../../assets/kid_transparent.png'
 import { TEInput } from "tw-elements-react";
-import { Link, useNavigate } from "react-router-dom";
 import close from './close.png'
-import { useState } from "react";
-import axios from 'axios'
-import { setAuthUser } from "../../helper/Storage";
 
 
 
 const Login = () => {
+
+  const Navigate = useNavigate();
+  const [login,setLogin]=useState({
+   email:"",
+   password : "",
+   loading : false,
+   err : null,
+  });
+
+  const LoginFun = (e)=>{
+    e.preventDefault();
+    setLogin({...login, loading:true})
+    axios.post("http://localhost:4000/users/login",{
+      email : login.email,
+      password : login.password,
+    }).then((resp)=>{
+      setLogin({...login, loading: true, err: ""})
+      setAuthUser(resp.data);
+      Navigate("/");
+
+    }).catch((errors) => {
+      setLogin({...login, loading: false, err: errors.response.data.msg, });
+    });
+  };
 
 // function eyeVisible() {
 //   var x = document.getElementById("password");
@@ -124,43 +147,55 @@ const Login = () => {
 			<div class="w-full justify-center xl:w-3/5 lg:w-11/12 flex">
 				
 				<div class="w-full lg:w-7/12 bg-white dark:bg-gray-700 p-5 rounded-lg">
-					<h3 class="py-4 text-4xl font-bold text-center text-gray-800 dark:text-white mb-2">Sign In</h3>
-					<form class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded">
-						<div class="mb-4 md:flex md:justify-between">
-							
-							
+              <h3 class="py-4 text-4xl font-bold text-center text-gray-800 dark:text-white mb-2">Sign In</h3>
+
+              
+        
+   {(login.err!== null)?<div class="p-4 mb-4 text-lg font-semibold text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          {login.err}
+        </div>:""}
+              
+					<form onSubmit={LoginFun} class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded">
+						<div class="mb-4 md:flex md:justify-between">		
 						</div>
 						<div class="mb-4">
 							<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white text-start" for="email">
                                 Email
                             </label>
 							<input
-                                class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 dark:text-black font-semibold border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 dark:text-white font-semibold border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                 id="email"
                                 type="email"
-                                placeholder="Email" required
+                    placeholder="Email" required
+                    value = {login.email}
+        onChange={(e)=>
+        setLogin({...login, email:e.target.value}) }
                             />
 						</div>
 						<div class="mb-5">
 							
 								<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white text-start" for="password">
-                                    Password
-                                  </label>
+                      Password
+                </label>
 
 								<input
-                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 dark:text-black font-semibold border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 dark:text-white font-semibold border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     id="password"
                                     type="password"
                                       placeholder="Enter Password"
-                                      required     
+                    required  
+                    value = {login.password}
+        onChange={(e)=>
+        setLogin({...login, password:e.target.value}) }
                                 />
-							
-							
+
+                  
 						</div>
 						<div class="mb-7 text-center">
 							<button
-                                class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-900 focus:outline-none focus:shadow-outline"
-                                type="submit"
+                                class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-900 focus:outline-none focus:shadow-outline hover:cursor-pointer"
+                    type="submit"
+                    disabled={login.loading===true}
                             >
                                 Log In
                             </button>
@@ -169,9 +204,9 @@ const Login = () => {
 						<div class="text-center">
 							<p className="mt-10 text-center text-sm text-gray-500">
                Not a member?{' '}
-             <a href="/registration" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+             <Link to={"/registration"} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 hover:underline">
                Sign Up and register now.
-            </a>
+            </Link>
           </p>
 						</div>
               </form>
