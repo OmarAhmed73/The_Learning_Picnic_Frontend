@@ -1,11 +1,11 @@
 import React from 'react'
 import '../../style/Reports.css'
 
-const TeacherReport = () => {
+const TeacherQuizReport = () => {
   return (
     <div className="reports">
       <div className="header d-flex justify-content-between mb-6">
-       <h3 className="reportsTitle text-5xl font-semibold text-white my-2 mx-auto">Students Reports</h3>
+       <h3 className="reportsTitle text-5xl font-semibold text-white my-2 mx-auto">Lesson Name</h3>
       </div>
 
     <form class="max-w-md mx-auto mb-2">   
@@ -25,42 +25,40 @@ const TeacherReport = () => {
     {/* head */}
     <thead>
       <tr>
-        <th className="font-bold text-xl text-white">Student Name</th>
-        <th className="font-bold text-xl text-white">Quiz1</th>
-        <th className="font-bold text-xl text-white">Quiz2</th>
-        <th className="font-bold text-xl text-white">Quiz3</th>
+        <th className="font-bold text-xl text-white">Questions No.</th>
+        <th className="font-bold text-xl text-white">Score</th>
+        <th className="font-bold text-xl text-white">Time Answered</th>
+        
       </tr>
     </thead>
     <tbody>
       {/* row 1 */}
       <tr>
        
-        <td className="text-base">Cy Ganderton</td>
-        <td>9</td>
-        <td>10</td>
-        <td>10</td>
+        <td className="text-base text-white">Question 1</td>
+        <td>90%</td>
+        <td>2 min.</td>
+      
       </tr>
       {/* row 2 */}
       <tr>
        
-        <td className="text-base">Hart Hagerty</td>
-        <td>8</td>
-        <td>9</td>
-        <td>9</td>
+        <td className="text-base text-white">Question 2</td>
+              <td>80%</td>
+              <td>10 min.</td>
+        
       </tr>
       {/* row 3 */}
       <tr>
         
-        <td className="text-base">Brice Swyre</td>
-        <td>5</td>
-        <td>5</td>
-        <td>7</td>
+        <td className="text-base text-white">Question 3</td>
+        <td>50%</td>
+       <td>5 min.</td>
       </tr>
       <tr>
-        <td className="text-base">Jon Snow</td>
-        <td>11</td>
-        <td>12</td>
-        <td>12</td>
+        <td className="text-base text-white">Question 4</td>
+        <td>60%</td>
+        <td>9 min.</td>
       </tr>
     </tbody>
   </table>
@@ -70,4 +68,4 @@ const TeacherReport = () => {
   )
 }
 
-export default TeacherReport
+export default TeacherQuizReport

@@ -22,6 +22,7 @@ import { Button } from '@mui/material';
 
 
 
+
 const Footer = () => {
 
 const [color, setColor] = useState('neutral');
@@ -41,10 +42,10 @@ const [color, setColor] = useState('neutral');
         }),
         flexGrow: 1,
         p: 2,
-        borderRadius: { xs: 0, sm: 'sm' },
       }}
+      
     >
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2}}>
         <IconButton
           variant="soft"
           size="sm"
