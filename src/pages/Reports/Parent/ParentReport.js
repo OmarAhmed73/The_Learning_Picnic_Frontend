@@ -1,14 +1,20 @@
 import React from 'react'
+import '../../style/Reports.css'
 
 const ParentReport = () => {
+
+  const childernArray = [{ Name: "firstChild", id: 123456 },
+                         { Name: "secondChild", id: 255555 },
+                         {Name: "thirdChild", id:618955}];
+  
+
   return (
     <div className="reports">
       <div className="header d-flex justify-content-between mb-6">
        <h3 className="reportsTitle text-5xl font-semibold text-white my-2 mx-auto">Your Child's Grades</h3>
       </div>
 
-      
-<form class="max-w-md mx-auto mb-2">   
+<form class="max-w-md mx-auto mb-4">   
     <div class="relative">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -20,20 +26,20 @@ const ParentReport = () => {
     </div>
 </form>
 
-
-      <div className="informationStudent">
+      {childernArray.map((child, index) => (
+        <div key={index} className='mb-10'>
+          <div className="informationStudent">
         <div className="mx-auto">
           <h5 className='inline-block text-xl font-semibold text-white my-2'>Full Name: </h5>
-          <p className='fullName inline-block text-lg font-bold text-white my-2 ml-2'>AAAAA BBBB CCCC</p>
+              <p className='fullName inline-block text-lg font-bold text-white my-2 ml-2'>{child.Name}</p>
         </div>
         <div className="sutudentID mx-auto">
           <h5 className='inline-block text-xl font-semibold text-white mb-3'>ID: </h5>
-          <p className='inline-block text-lg font-bold text-white mb-2 ml-2'>12345678</p>
+              <p className='inline-block text-lg font-bold text-white mb-2 ml-2'>{child.id}</p>
         </div>
-      </div>
-
-      <div className="overflow-x-auto">
-  <table className="table table-zebra">
+          </div>
+          <div className="overflow-x-auto ">
+  <table className="table table-zebra mb-2">
     {/* head */}
     <thead>
       <tr>
@@ -71,7 +77,14 @@ const ParentReport = () => {
       </tr>
     </tbody>
   </table>
-</div>
+          </div>
+          <hr class="w-3/5 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"></hr>
+          </div>
+      ))}
+
+      
+
+      
     </div>
   )
 }

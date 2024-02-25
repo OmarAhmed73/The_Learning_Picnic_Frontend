@@ -12,6 +12,7 @@ import Account from "../pages/Account/Account";
 import ShowQuiz from "../components/Quizzes/ShowQuiz";
 import ShowReports from "../pages/Reports/ShowReports";
 import Questions from "../pages/Questions/Questions";
+import TeacherQuizReport from "../pages/Reports/Teacher/TeacherQuizReport";
 
 export const routes = createBrowserRouter([
  {
@@ -63,6 +64,10 @@ export const routes = createBrowserRouter([
             path: ":id",
             element: <Questions/>,
         },
+        {
+            path: "/quizReports",
+            element: <TeacherQuizReport/>
+        }
     ]
   }
 ]);
