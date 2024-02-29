@@ -25,7 +25,7 @@ import { Button } from '@mui/material';
 
 const Footer = () => {
 
-const [color, setColor] = useState('neutral');
+const [color, setColor] = useState('primary');
 
   return (
 

@@ -156,9 +156,9 @@ const Login = () => {
         </div>:""}
               
 					<form onSubmit={LoginFun} class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded">
-						<div class="mb-4 md:flex md:justify-between">		
+						<div class="mb-5 md:flex md:justify-between">		
 						</div>
-						<div class="mb-4">
+						<div class="mb-5">
 							<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white text-start" for="email">
                                 Email
                             </label>
@@ -191,7 +191,7 @@ const Login = () => {
 
                   
 						</div>
-						<div class="mb-7 text-center">
+						<div class="mb-8 text-center">
 							<button
                                 class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-900 focus:outline-none focus:shadow-outline hover:cursor-pointer"
                     type="submit"
@@ -199,16 +199,8 @@ const Login = () => {
                             >
                                 Log In
                             </button>
-						</div>
-						<hr class="mb-6 border-t" />
-						<div class="text-center">
-							<p className="mt-10 text-center text-sm text-gray-500">
-               Not a member?{' '}
-             <Link to={"/registration"} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 hover:underline">
-               Sign Up and register now.
-            </Link>
-          </p>
-						</div>
+                </div>
+                <hr class="mb-5 border-t" />
               </form>
                       </div>
                       

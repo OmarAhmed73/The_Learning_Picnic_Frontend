@@ -13,6 +13,12 @@ import ShowQuiz from "../components/Quizzes/ShowQuiz";
 import ShowReports from "../pages/Reports/ShowReports";
 import Questions from "../pages/Questions/Questions";
 import TeacherQuizReport from "../pages/Reports/Teacher/TeacherQuizReport";
+import TeacherDashboard from "../pages/Admin/TeacherDashboard";
+import ParentDashboard from "../pages/Admin/ParentDashboard";
+import StudentDashboard from "../pages/Admin/StudentDashboard";
+import AddChild from "../pages/Admin/DashboardFunctions/AddChild";
+import UpdateDashboard from "../pages/Admin/DashboardFunctions/UpdateDashboard";
+
 
 export const routes = createBrowserRouter([
  {
@@ -67,6 +73,26 @@ export const routes = createBrowserRouter([
         {
             path: "/quizReports",
             element: <TeacherQuizReport/>
+        },
+        {
+            path: "/teacher",
+            element: <TeacherDashboard/>
+        },
+        {
+            path: "/parent",
+            element: <ParentDashboard/>
+        },
+        {
+            path: "/student",
+            element: <StudentDashboard/>
+        },
+        {
+            path: "/addChild",
+            element: <AddChild/>
+        },
+        {
+            path: "/update",
+            element: <UpdateDashboard/>
         }
     ]
   }
