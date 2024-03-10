@@ -18,6 +18,9 @@ import ParentDashboard from "../pages/Admin/ParentDashboard";
 import StudentDashboard from "../pages/Admin/StudentDashboard";
 import AddChild from "../pages/Admin/DashboardFunctions/AddChild";
 import UpdateDashboard from "../pages/Admin/DashboardFunctions/UpdateDashboard";
+import Guest from "../middleware/Guest";
+import Admin from "../middleware/Admin";
+import User from "../middleware/User";
 
 
 export const routes = createBrowserRouter([
@@ -30,15 +33,61 @@ export const routes = createBrowserRouter([
         path: "/",
         element: <Home/>,
         },
+        
+        // Guest Middleware
         {
-        path: "/login",
-        element: <Login/>,
+            element: <Guest />,
+            children: [
+                    {
+                    path: "/login",
+                    element: <Login/>,
+                    },
+                    
+            ]
+    
+        },
+
+        // Admin Middleware
+        {
+            element: <Admin />,
+            children: [
+                {
+                    path: "/registration",
+                    element: <Register/>
+                },
+                 {
+            path: "/teacher",
+            element: <TeacherDashboard/>
         },
         {
-            path: "/registration",
-            element: <Register/>
+            path: "/parent",
+            element: <ParentDashboard/>
         },
         {
+            path: "/student",
+            element: <StudentDashboard/>
+        },
+        {
+            path: "/addChild",
+            element: <AddChild/>
+        },
+        {
+            path: "/update",
+            element: <UpdateDashboard/>
+        }
+            ]
+            
+        },
+
+        //User Middleware
+        {
+            element: <User />,
+            children: [
+             {
+                    path: "/login",
+                    element: <Login/>,
+                    },
+                {
         path: "/contact",
         element: <Contact/>,
         },
@@ -74,26 +123,10 @@ export const routes = createBrowserRouter([
             path: "/quizReports",
             element: <TeacherQuizReport/>
         },
-        {
-            path: "/teacher",
-            element: <TeacherDashboard/>
+            ]
         },
-        {
-            path: "/parent",
-            element: <ParentDashboard/>
-        },
-        {
-            path: "/student",
-            element: <StudentDashboard/>
-        },
-        {
-            path: "/addChild",
-            element: <AddChild/>
-        },
-        {
-            path: "/update",
-            element: <UpdateDashboard/>
-        }
+        
+       
     ]
   }
 ]);

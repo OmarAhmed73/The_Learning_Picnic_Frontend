@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../style/UpdateDashboard.css'
+import '../../style/FunctionsDashboard.css'
 
 const UpdateDashboard = () => {
   return (
