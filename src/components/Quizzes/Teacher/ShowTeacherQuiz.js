@@ -7,7 +7,7 @@ const ShowTeacherQuiz = () => {
     <div className='bodyTeacherQuiz'>
       <div className="content-container p-3">
         <div className='row-auto'>
-        <div class="gridContainer grid grid-cols-5 gap-3">
+        <div class="gridContainer grid grid-cols-6 gap-4">
         <TeacherQuizCard/>
         <TeacherQuizCard/>
         <TeacherQuizCard/>

@@ -12,7 +12,8 @@ const Register = () => {
     lastName:"",
    email:"",
    password : "",
-   phone : "",
+    phone: "",
+   role: "",
    loading : false,
    err : null,
   });
@@ -21,12 +22,13 @@ const RegisterFun = (e)=>{
     e.preventDefault();
     console.log(register);
     setRegister({...register,loading:true})
-  axios.post("http://localhost:4000/users/register", {
+  axios.post(`${process.env.REACT_APP_API_URL}/users/register`, {
       firstName: register.firstName,
       lastName: register.lastName,
       email : register.email,
       password : register.password,
-      phone : register.phone,
+    phone: register.phone,
+      role: register.role,
     })
     .then((resp)=>{
       setRegister({...register,loading:true, err: ""})
@@ -128,19 +130,31 @@ const RegisterFun = (e)=>{
 <ul class="float-right items-center w-9/12 mx-auto text-sm font-medium text-gray-900 bg-transparent border border-gray-200 rounded-lg sm:flex dark:bg-transparent dark:border-gray-600 dark:text-white">
     <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
         <div class="flex items-center ps-3">
-            <input id="STUDENT" type="radio" value="STUDENT" name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                        <input id="STUDENT" type="radio" value="STUDENT"
+                          onChange={(e) =>
+         setRegister({...register, role:e.target.value}) 
+                        }
+                          name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
             <label for="STUDENT" class="ml-2 py-2 text-base font-medium text-gray-900 dark:text-gray-300">Student</label>
         </div>
     </li>
     <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
         <div class="flex items-center ps-3">
-           <input id="PARENT" type="radio" value="PARENT" name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                        <input id="PARENT" type="radio" value="PARENT"
+           onChange={(e) =>
+         setRegister({...register, role:e.target.value}) 
+                          }
+                          name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
             <label for="PARENT" class="ml-2 py-2 text-base font-medium text-gray-900 dark:text-gray-300">Parent</label>
         </div>
     </li>
      <li class="w-full dark:border-gray-600">
         <div class="flex items-center ps-3">
-         <input id="TEACHER" type="radio" value="TEACHER" name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                        <input id="TEACHER" type="radio" value="TEACHER"
+         onChange={(e) =>
+         setRegister({...register, role:e.target.value}) 
+                          }
+                          name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
             <label for="TEACHER" class="ml-2 py-2 text-base font-medium text-gray-900 dark:text-gray-300">Teacher</label>
         </div>
     </li>

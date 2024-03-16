@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react';
 import '../pages/style/Footer.css'
 import kids from '../assets/kids3.jpg'
-
 import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
 import IconButton from '@mui/joy/IconButton';
@@ -22,15 +21,12 @@ import { Button } from '@mui/material';
 
 
 
-
 const Footer = () => {
 
 const [color, setColor] = useState('primary');
 
   return (
 
-
-   
                 
       <Sheet
       variant="solid"
@@ -42,10 +38,10 @@ const [color, setColor] = useState('primary');
         }),
         flexGrow: 1,
         p: 2,
+        borderRadius: { xs: 0 },
       }}
-      
     >
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2}}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <IconButton
           variant="soft"
           size="sm"

@@ -8,7 +8,6 @@ export const setAuthUser = (data) => {
 export const getAuthUser = (data) => {
     // get object from the local storage
     // parse the object data
-    
     if (localStorage.getItem("user")) {
         return JSON.parse(localStorage.getItem("user"));
     }

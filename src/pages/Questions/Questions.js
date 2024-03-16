@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React, {useEffect, useRef} from 'react'
 import questions from "./QuestionList";
 import '../style/Questions.css';
 
 
 const Questions = () => {
-    const quizzesButtonRef = useRef(null);
     const nextButtonRef = useRef(null);
     const answerButtonsRef = useRef(null);
     const questionElementRef = useRef(null);
@@ -16,21 +15,17 @@ const Questions = () => {
    //   const questionElement = document.getElementById("question");
       
       const answerButtons = answerButtonsRef.current;
-  //  const answerButtons = document.getElementById("answer-buttons");
+   //  const answerButtons = document.getElementById("answer-buttons");
       
       const nextButton = nextButtonRef.current;
-        // const nextButton = document.getElementById("next-btn");
-        
-        const quizzesButton = quizzesButtonRef.current;
-         // const quizzesButton = document.getElementById("quizzes-btn");
+   // const nextButton = document.getElementById("next-quizbtn");
     
 
         let currentQuestionIndex = 0;
         let score = 0;
         
     function resetState() {
-        nextButton.style.display = "none";
-        quizzesButton.style.display = "none";
+    nextButton.style.display = "none";
     while (answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild);
     }
@@ -81,8 +76,8 @@ function selectAnswer(e) {
 function showScore() {
     resetState();
     questionElement.innerHTML = `You Scored ${score} out of ${questions.length}!`;
-    // nextButton.innerHTML = "Play Again";
-    quizzesButton.style.display = "block";
+    nextButton.innerHTML = "Play Again";
+    nextButton.style.display = "block";
  }
 
 function handleNextButton() {
@@ -107,8 +102,7 @@ nextButton.addEventListener("click", () => {
   
   
   return (
-      <div className='quizBody'>
-    
+    <div className='quizBody'>
       <>
         <div className="quizContainer">
         <h1>Quiz ##</h1>
@@ -120,11 +114,7 @@ nextButton.addEventListener("click", () => {
                 <button className="quizbtn" type="button">answer 3</button>
                 <button className="quizbtn" type="button">answer 4</button>
             </div>
-                      <button id="next-btn" ref={nextButtonRef} type="button">Next</button>
-                      <a href="quizzes">
-                          <button id="quizzes-btn" ref={quizzesButtonRef} type="button">See other quizzes</button>
-                      </a>
-            
+            <button id="next-btn" ref={nextButtonRef} type="button">Next</button>
         </div>
     </div>
       </>
