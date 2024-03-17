@@ -18,6 +18,7 @@ import ParentDashboard from "../pages/Admin/ParentDashboard";
 import StudentDashboard from "../pages/Admin/StudentDashboard";
 import AddChild from "../pages/Admin/DashboardFunctions/AddChild";
 import UpdateDashboard from "../pages/Admin/DashboardFunctions/UpdateDashboard";
+import ModelAnswer from "../pages/ModelAnswer/ModelAnswer";
 
 export const routes = createBrowserRouter([
  {
@@ -98,7 +99,10 @@ export const routes = createBrowserRouter([
             path: "/update",
             element: <UpdateDashboard/>
         },
-        
+        {
+            path: "/modelAnswer",
+            element: <ModelAnswer/>
+       }
 
     ]
   }

@@ -44,7 +44,9 @@ const ShowLessonsTeacher = () => {
         <LessonCardTeacher/>
         <LessonCardTeacher/> 
         </div>
-
+<a href="/addition">
+          <button type="button" class="mt-2 text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 font-large rounded-full text-base px-4 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add Lesson</button>
+        </a> 
         </div>
     </div>
   )

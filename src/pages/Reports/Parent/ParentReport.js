@@ -35,7 +35,7 @@ const ParentReport = () => {
 
   return (
     <div className="reports">
-      <div className="header d-flex justify-content-between mb-6">
+      <div className="header flex justify-content-between mb-6">
        <h3 className="reportsTitle text-5xl font-semibold text-white my-2 mx-auto">Your Children's Grades</h3>
       </div>
 

@@ -7,7 +7,7 @@ const Admin = () => {
 
   return (
     <>
-        {(auth && auth.role === "ADMIN") ? <Outlet/> : <Navigate to={"/"}/>}     
+        {(auth && auth.role === "ADMIN") ? <Outlet/> : <Navigate to={"/registration"}/>}     
     </>
   )
 }
