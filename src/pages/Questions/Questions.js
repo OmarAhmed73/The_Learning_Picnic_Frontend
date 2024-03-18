@@ -1,12 +1,14 @@
 import React, {useEffect, useRef} from 'react'
 import questions from "./QuestionList";
 import '../style/Questions.css';
+import { Link } from 'react-router-dom';
 
 
 const Questions = () => {
     const nextButtonRef = useRef(null);
     const answerButtonsRef = useRef(null);
     const questionElementRef = useRef(null);
+    const quizButtonRef = useRef(null);
 
 
     useEffect(() => {
@@ -18,7 +20,9 @@ const Questions = () => {
    //  const answerButtons = document.getElementById("answer-buttons");
       
       const nextButton = nextButtonRef.current;
-   // const nextButton = document.getElementById("next-quizbtn");
+        // const nextButton = document.getElementById("next-quizbtn");
+        
+        const quizzesbtn = quizButtonRef.current;
     
 
         let currentQuestionIndex = 0;
@@ -76,8 +80,8 @@ function selectAnswer(e) {
 function showScore() {
     resetState();
     questionElement.innerHTML = `You Scored ${score} out of ${questions.length}!`;
-    nextButton.innerHTML = "Play Again";
-    nextButton.style.display = "block";
+    nextButton.style.display = "none";
+    quizzesbtn.style.display = "block";
  }
 
 function handleNextButton() {
@@ -114,7 +118,11 @@ nextButton.addEventListener("click", () => {
                 <button className="quizbtn" type="button">answer 3</button>
                 <button className="quizbtn" type="button">answer 4</button>
             </div>
-            <button id="next-btn" ref={nextButtonRef} type="button">Next</button>
+             <button id="next-btn" ref={nextButtonRef} type="button">Next</button>
+            <Link to={"/quizzes"}>
+              <button id="quizzes-btn" ref={quizButtonRef} type="button">See Other quizzes</button>
+            </Link>
+            
         </div>
     </div>
       </>

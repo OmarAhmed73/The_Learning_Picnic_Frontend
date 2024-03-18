@@ -19,6 +19,7 @@ import StudentDashboard from "../pages/Admin/StudentDashboard";
 import AddChild from "../pages/Admin/DashboardFunctions/AddChild";
 import UpdateDashboard from "../pages/Admin/DashboardFunctions/UpdateDashboard";
 import ModelAnswer from "../pages/ModelAnswer/ModelAnswer";
+import ShowQuizPT from "../pages/ShowQuizPT/ShowQuizPT";
 
 export const routes = createBrowserRouter([
  {
@@ -102,7 +103,11 @@ export const routes = createBrowserRouter([
         {
             path: "/modelAnswer",
             element: <ModelAnswer/>
-       }
+        },
+        {
+            path: "/showQuizPT",
+            element: <ShowQuizPT/>
+        }
 
     ]
   }
