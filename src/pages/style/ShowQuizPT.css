@@ -37,8 +37,7 @@
     color: #001e4d;
 }
 
-.next-btn-quiz,
-.quizzes-btn-PT{
+.next-btn-quiz{
     background: #001e4d;
         color: #fff;
         font-weight: 500;
@@ -50,11 +49,18 @@
 }
 
 .quizzes-btn-PT{
-    width: 180px !important;
+    background: #001e4d;
+        color: #fff;
+        font-weight: 500;
+    width: 180px ;
         font-size: 1.125rem;
         /* 18px */
         line-height: 1.75rem;
         /* 28px */
+        border: 0;
+            padding: 10px;
+            margin: 20px auto 0;
+            border-radius: 4px;
 }
 
 .next-btn-quiz:hover,
@@ -81,4 +87,13 @@
     background: #222;
     color: #fff;
     cursor: auto;
+}
+
+@media (max-width: 260px){
+.next-btn-quiz,
+.quizzes-btn-PT{
+        width: 80%;
+        font-size: 1rem;
+            line-height: 1.5rem;
+    }
 }
