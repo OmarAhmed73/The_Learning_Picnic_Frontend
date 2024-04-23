@@ -26,7 +26,11 @@ const Login = () => {
     }).then((resp)=>{
       setLogin({...login, loading: true, err: ""})
       setAuthUser(resp.data);
-      Navigate("/");
+      if (resp.data.data.role === "ADMIN") {
+        Navigate("/registration")
+      } else {
+        Navigate("/home")
+      }
 
     }).catch((errors) => {
       setLogin({...login, loading: false, err: errors.response.data.msg, });
@@ -48,8 +52,8 @@ const Login = () => {
 
               
         
-   {(login.err!== null)?<div class="p-4 mb-4 text-lg font-semibold text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-          {login.err}
+   {(login.err!== null)?<div class="p-3 mb-4 text-lg font-semibold text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <p className="text-red-500">Something is wrong</p>
         </div>:""}
               
 					<form onSubmit={LoginFun} class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded">

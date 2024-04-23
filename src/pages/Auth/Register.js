@@ -3,10 +3,11 @@ import child from '../../assets/child.jpg'
 import '../style/Register.css'
 import {  useNavigate } from "react-router-dom";
 import axios from 'axios'
-import { setAuthUser } from "../../helper/Storage";
+import { setAuthUser, getAuthUser } from "../../helper/Storage";
 
 const Register = () => {
-   const Navigate = useNavigate();
+  const Navigate = useNavigate();
+  const Auth = getAuthUser();
   const [register, setRegister] = useState({
     firstName: "",
     lastName:"",
@@ -15,7 +16,8 @@ const Register = () => {
     phone: "",
    role: "",
    loading : false,
-   err : null,
+    err: null,
+   status: "",
   });
 
 const RegisterFun = (e)=>{
@@ -23,16 +25,19 @@ const RegisterFun = (e)=>{
     console.log(register);
     setRegister({...register,loading:true})
   axios.post(`${process.env.REACT_APP_API_URL}/users/register`, {
-      firstName: register.firstName,
+    firstName: register.firstName,
       lastName: register.lastName,
       email : register.email,
       password : register.password,
     phone: register.phone,
-      role: register.role,
+    role: register.role,
+  }, {  
+      headers :{
+        Authorization: `Bearer ${Auth.data.token}`,
+      },
     })
     .then((resp)=>{
-      setRegister({...register,loading:true, err: ""})
-      setAuthUser(resp.data);
+      setRegister({...register,loading:true, err: "", status:"Success"})
       Navigate("/");
 
     })
@@ -57,8 +62,11 @@ const RegisterFun = (e)=>{
 				<div class="w-full lg:w-7/12 bg-white dark:bg-gray-700 p-5 rounded-l-lg">
               <h3 class="py-4 text-4xl font-bold text-center text-gray-800 dark:text-white">Create an Account!</h3>
 
-              {(register.err!== null)?<div class="p-4 mb-4 text-lg font-semibold text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-          {register.err}
+              {(register.err!== null)?<div class="p-3 mb-4 text-lg font-semibold text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <p className="text-red-500">Something is wrong</p>
+        </div>:""}
+              {(register.err=== "")?<div class="p-3 mb-4 text-lg font-semibold text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <p className="text-green-500">{register.status} </p>
         </div>:""}
               
               <form onSubmit={RegisterFun} class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded">

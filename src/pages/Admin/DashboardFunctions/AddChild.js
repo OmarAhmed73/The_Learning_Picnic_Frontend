@@ -15,7 +15,7 @@ const AddChild = () => {
 			<div class="w-full xl:w-3/5 flex">
 				
 				<div class="w-full lg:w-7/12 mx-auto bg-white dark:bg-gray-700 p-5 rounded-lg">
-                 <h3 class="pb-4 text-base font-medium text-left text-[#d1d5db] dark:text-[#d1d5db]">
+                 <h3 class="pb-4 text-base font-semibold text-left text-[#b5b7ba] dark:text-[#b5b7ba]">
                   The maximum number of emails to add is <span className='font-extrabold'>three</span> at each time.
                 </h3>
               <form class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded">     

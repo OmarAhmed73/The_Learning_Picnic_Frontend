@@ -1,7 +1,69 @@
-import React from 'react'
+import React,  { useEffect, useState } from 'react'
 import '../../style/FunctionsDashboard.css'
+import axios from 'axios';
+import { getAuthUser } from '../../../helper/Storage';
+import { Link, useParams } from "react-router-dom";
 
 const UpdateDashboard = () => {
+  let { id } = useParams();
+  const Auth = getAuthUser();
+
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName:"",
+   email:"",
+   password : "",
+    phone: "",
+     loading: false,
+    err: "",
+    success : "",
+    reload : 0
+  });
+
+
+
+  // const handleUpdate = async () => {
+  //       try {
+  //           const response = await  axios.put(`${process.env.REACT_APP_API_URL}/users/${id}`, {
+  //             // Include any data you want to send for the update
+  //             firstName: user.firstName,
+  //             lastName: user.lastName
+  //           });
+  //           console.log(response.data); // Log success message
+  //       } catch (error) {
+  //           console.error('Error updating data:', error);
+  //       }
+  //   };
+
+
+   useEffect(() => {
+    axios.put(`${process.env.REACT_APP_API_URL}/users/:_id` + id, {
+        headers: {
+        Authorization: `Bearer ${Auth.data.token}`,
+      }
+      })
+      .then((resp) => {
+        setUser({
+          ...user,
+          firstName: resp.data.firstName,
+          lastName: resp.data.lastName,
+          email: resp.data.email,
+          password : resp.data.password,
+          phone : resp.data.phone ,
+        });
+      })
+      .catch((err) => {
+        setUser({
+          ...user,
+          loading: false,
+          success: null,
+          err: "Something went wrong, please try again later !",
+        });
+      });
+     
+     
+  }, [user.reload]);
+
   return (
     <div className="updateDash min-h-screen p-6">
       <div className="header mb-2 mt-1">
@@ -28,8 +90,9 @@ const UpdateDashboard = () => {
                       class="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-white font-semibold border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="firstName"
                       type="text"
-                      placeholder="First Name"
-                      required
+                      placeholder={user.firstName}
+                        required
+                        value={user.firstName}
                                 />
 							</div>
 							<div class="md:ml-2">
@@ -89,7 +152,7 @@ const UpdateDashboard = () => {
 							<button
                                 class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-900 focus:outline-none focus:shadow-outline"
                     type="submit"
-                            >
+                         >
                                 Update
                             </button>
 						</div>

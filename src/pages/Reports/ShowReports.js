@@ -6,7 +6,7 @@ import { getAuthUser } from '../../helper/Storage'
 
 const ShowReports = () => {
 
-    const Auth = getAuthUser();
+     const Auth = getAuthUser();
 
     if(Auth && Auth.role === 'STUDENT'){
         return ( <StudentReport/>)
