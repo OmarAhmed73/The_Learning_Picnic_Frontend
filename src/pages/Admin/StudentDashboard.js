@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import '../style/TeacherDashboard.css'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { getAuthUser } from '../../helper/Storage';
 
 const StudentDashboard = () => {
+
+  const Navigate= useNavigate();
   const Auth = getAuthUser();
   
   const [search, setSearch] = useState('');
@@ -90,9 +92,11 @@ const deleteUser = (id) => {
                       <td class="text-left py-3 px-4 text-lg">{student.phone}</td>
                     <td class="w-1/5 text-left py-3 px-4 text-lg">{student.email}</td>
                       <td className="text-center">
-                        <Link to={"/update"}>
-                          <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 me-2 my-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update</button>
-                      </Link>
+                       
+                      <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 me-2 my-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                      onClick={(e) => {
+              Navigate("/"+student._id)
+                  }}>Update</button>
                       
                         <button type="button" onClick={(e) => {
               deleteUser(student._id);

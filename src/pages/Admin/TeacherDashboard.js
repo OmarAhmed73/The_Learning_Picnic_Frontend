@@ -1,6 +1,6 @@
 import React,  { useEffect, useState } from 'react'
 import '../style/TeacherDashboard.css'
-import { Link, Navigate, Route, useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { getAuthUser } from '../../helper/Storage';
 
